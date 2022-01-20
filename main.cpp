@@ -1,40 +1,40 @@
-// C++ program to generate binary numbers from 1 to n
-#include <bits/stdc++.h>
+// C++ program to put spaces between words starting
+// with capital letters.
+#include <iostream>
 using namespace std;
 
-// This function uses queue data structure to print binary
-// numbers
-void generatePrintBinary(int n)
+// Function to amend the sentence
+void amendSentence(string str)
 {
-    // Create an empty queue of strings
-    queue<string> q;
+    // Traverse the string
+    for(int i=0; i < str.length(); i++)
+    {
+        // Convert to lowercase if its
+        // an uppercase character
+        if (str[i]>='A' && str[i]<='Z')
+        {
+            str[i]=str[i]+32;
 
-    // Enqueue the first binary number
-    q.push("1");
+            // Print space before it
+            // if its an uppercase character
+            if (i != 0)
+                cout << " ";
 
-    // This loops is like BFS of a tree with 1 as root
-    // 0 as left child and 1 as right child and so on
-    while (n--) {
-        // print the front of queue
-        string s1 = q.front();
-        q.pop();
-        cout << s1 << "\n";
+            // Print the character
+            cout << str[i];
+        }
 
-        string s2 = s1; // Store s1 before changing it
-
-        // Append "0" to s1 and enqueue it
-        q.push(s1.append("0"));
-
-        // Append "1" to s2 and enqueue it. Note that s2
-        // contains the previous front
-        q.push(s2.append("1"));
+        // if lowercase character
+        // then just print
+        else
+            cout << str[i];
     }
 }
 
-// Driver program to test above function
+// Driver code
 int main()
 {
-    int n = 10;
-    generatePrintBinary(n);
+    string str ="BruceWayneIsBatman";
+    amendSentence(str);
     return 0;
 }
